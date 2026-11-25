@@ -1,0 +1,10 @@
+{"timestamp": 0, "type": "instance", "data": {"id": "a", "boot": 1, "region": "local", "model": "s2", "format": "f2", "reads": ["f2"], "minimum_runtime": 2, "state": "ready"}}
+{"timestamp": 0, "type": "instance", "data": {"id": "b", "boot": 1, "region": "local", "model": "s3", "format": "f3", "reads": ["f2", "f3"], "minimum_runtime": 6, "state": "ready"}}
+{"timestamp": 1, "type": "route", "data": {"tenant": "plant", "revision": 1, "allow_regions": ["local"], "weights": {"a": 100, "b": 0}}}
+{"timestamp": 2, "type": "open", "data": {"tenant": "plant", "session": "short"}}
+{"timestamp": 3, "type": "request", "data": {"session": "short", "turn": 1, "request": "t1", "body": "生成", "deadline": 10}}
+{"timestamp": 4, "type": "instance", "data": {"id": "a", "boot": 2, "region": "local", "model": "s2", "format": "f2", "reads": ["f2"], "minimum_runtime": 2, "state": "down"}}
+{"timestamp": 5, "type": "route", "data": {"tenant": "plant", "revision": 2, "allow_regions": ["local"], "weights": {"a": 0, "b": 100}}}
+{"timestamp": 6, "type": "result", "data": {"attempt": "attempt:1", "id": "a", "boot": 1, "state": "not_committed"}}
+{"timestamp": 7, "type": "request", "data": {"session": "short", "turn": 1, "request": "t1", "body": "生成", "deadline": 10}}
+{"timestamp": 8, "type": "inspect", "data": {"session": "short"}}

@@ -1,0 +1,19 @@
+{"timestamp": 0, "type": "instance", "data": {"id": "a", "boot": 1, "region": "local", "model": "s2", "format": "f2", "reads": ["f2"], "minimum_runtime": 3, "state": "ready"}}
+{"timestamp": 0, "type": "instance", "data": {"id": "b", "boot": 1, "region": "local", "model": "s3", "format": "f3", "reads": ["f2", "f3"], "minimum_runtime": 5, "state": "ready"}}
+{"timestamp": 1, "type": "route", "data": {"tenant": "plant", "revision": 1, "allow_regions": ["local"], "weights": {"a": 100, "b": 0}}}
+{"timestamp": 2, "type": "open", "data": {"tenant": "plant", "session": "rounds"}}
+{"timestamp": 3, "type": "request", "data": {"session": "rounds", "turn": 1, "request": "t1", "body": "读取模式", "deadline": 15}}
+{"timestamp": 5, "type": "result", "data": {"attempt": "attempt:1", "id": "a", "boot": 1, "state": "committed", "result": "定位完成", "checkpoint": "cp1"}}
+{"timestamp": 6, "type": "request", "data": {"session": "rounds", "turn": 2, "request": "t2", "body": "继续比较", "deadline": 17}}
+{"timestamp": 7, "type": "instance", "data": {"id": "a", "boot": 1, "region": "local", "model": "s2", "format": "f2", "reads": ["f2"], "minimum_runtime": 3, "state": "draining"}}
+{"timestamp": 8, "type": "route", "data": {"tenant": "plant", "revision": 2, "allow_regions": ["local"], "weights": {"a": 0, "b": 100}}}
+{"timestamp": 9, "type": "checkpoint_visible", "data": {"id": "b", "boot": 1, "session": "rounds", "checkpoint": "cp1"}}
+{"timestamp": 10, "type": "result", "data": {"attempt": "attempt:2", "id": "a", "boot": 1, "state": "unknown"}}
+{"timestamp": 11, "type": "cancel", "data": {"session": "rounds", "request": "t2"}}
+{"timestamp": 12, "type": "request", "data": {"session": "rounds", "turn": 3, "request": "t3", "body": "查看优先级", "deadline": 35}}
+{"timestamp": 18, "type": "result", "data": {"attempt": "attempt:2", "id": "a", "boot": 1, "state": "committed", "result": "比较完成", "checkpoint": "cp2"}}
+{"timestamp": 19, "type": "inspect", "data": {"session": "rounds"}}
+{"timestamp": 20, "type": "checkpoint_visible", "data": {"id": "b", "boot": 1, "session": "rounds", "checkpoint": "cp2"}}
+{"timestamp": 21, "type": "instance", "data": {"id": "a", "boot": 1, "region": "local", "model": "s2", "format": "f2", "reads": ["f2"], "minimum_runtime": 3, "state": "down"}}
+{"timestamp": 22, "type": "request", "data": {"session": "rounds", "turn": 3, "request": "t3", "body": "查看优先级", "deadline": 35}}
+{"timestamp": 23, "type": "inspect", "data": {"session": "rounds"}}
